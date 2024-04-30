@@ -13,15 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Self reference action
+      # https://github.com/orgs/community/discussions/25194#discussioncomment-3246777
       - name: Pytest coverage comment
-        uses: MishaKav/pytest-coverage-comment@main
+        uses: ./
         with:
           multiple-files: |
             My Title 1, ./data/pytest-coverage_3.txt, ./data/pytest_1.xml
             My Title 2, ./data/pytest-coverage_4.txt, ./data/pytest_2.xml
 
       - name: Pytest coverage comment multiple-files no test report
-        uses: MishaKav/pytest-coverage-comment@main
+        uses: ./
         with:
           create-new-comment: true
           multiple-files: |
@@ -29,7 +31,7 @@ jobs:
             My Title 2 w/o report, ./data/pytest-coverage_4.txt
 
       - name: Pytest coverage comment multiple-files mixed 1
-        uses: MishaKav/pytest-coverage-comment@main
+        uses: ./
         with:
           create-new-comment: true
           multiple-files: |
@@ -37,7 +39,7 @@ jobs:
             My Title 2 w/o report, ./data/pytest-coverage_4.txt
 
       - name: Pytest coverage comment multiple-files mixed 2
-        uses: MishaKav/pytest-coverage-comment@main
+        uses: ./
         with:
           create-new-comment: true
           multiple-files: |
